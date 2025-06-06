@@ -1,8 +1,12 @@
 import { useDraggable } from "@dnd-kit/core";
+import { useContext } from "react";
+import { TaskContext } from "../../context/TaskContext";
 
 import styles from "./Task.module.scss";
 
-const Task = ({ task, isActive, onProgressChange }) => {
+const Task = ({ isActive, task }) => {
+
+    const {handleChangeRange} = useContext(TaskContext)
 
     const { attributes, listeners, setNodeRef } = useDraggable({
         id: task.id
@@ -24,7 +28,7 @@ const Task = ({ task, isActive, onProgressChange }) => {
                 {task.status === "inProgress" && (
                     <div className={styles.progress}>
                         <input 
-                            onChange={(e) => onProgressChange(task.id, e.target.value)}
+                            onChange={(e) => handleChangeRange(task.id, e.target.value)}
                             onPointerDown={(e) => e.stopPropagation()}
                             type="range"
                             min="0"
