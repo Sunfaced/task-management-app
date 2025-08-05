@@ -15,11 +15,7 @@ const Board = () => {
     tasks,
     activeId,
     handleDragStart,
-    handleDragEnd,
-    handleChangeRange,
-    todoTasks,
-    inProgressTasks,
-    doneTasks
+    handleDragEnd
   } = useContext(TaskContext)
 
   const activeTask = tasks.find((task) => task.id === activeId);
